@@ -179,14 +179,14 @@ exports.updateUser = async (req, res) => {
 exports.deleteUser = async (req, res) => {
     try {
         const userId = req.params.id;
-        const already = await User.findOne({_id: userId})
-        if(!already) return res.status(404).send({message: 'User not found'});
-        if(already.role == 'CLIENT'){
-            const deleteUser = await User.findOneAndDelete({_id: userId});
-            if(!deleteUser) return res.status(500).send({message: 'Cannot delete user'});
-            return res.send({message: 'User deleted'});
+        const already = await User.findOne({ _id: userId })
+        if (!already) return res.status(404).send({ message: 'User not found' });
+        if (already.role == 'CLIENT') {
+            const deleteUser = await User.findOneAndDelete({ _id: userId });
+            if (!deleteUser) return res.status(500).send({ message: 'Cannot delete user' });
+            return res.send({ message: 'User deleted' });
         }
-        return res.status(401).send({message: 'Unauthorized to delete this User'});
+        return res.status(401).send({ message: 'Unauthorized to delete this User' });
     } catch (err) {
         console.log(err);
         return res.status(500).send(err);

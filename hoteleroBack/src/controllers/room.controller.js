@@ -1,6 +1,7 @@
 'use strict'
 
 const Room = require('../models/rooms');
+const History = require('../controllers/history.controller')
 const { validateData } = require('../utils/validate');
 
 exports.createRoom = async (req, res) => {
@@ -94,6 +95,8 @@ exports.reservation = async (req, res) => {
         const reservation = await Room.findOneAndUpdate({_id: roomId}, data, {new: true});
         if(!reservation) return res.status(500).send({message: 'Cannot reserve this room'});
         //update $push:user
+        //await Room.findOneAndUpdate({_id: roomId}, {$push: {history: [{user: data.user, total: room.price}]}})
+        History.createHistory(req, res, roomId, data.user, room.price);
         return res.send({message: 'Room reserved', reservation});
     } catch (err) {
         console.log(err);
