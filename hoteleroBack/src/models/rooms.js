@@ -8,6 +8,7 @@ const roomsModel = mongoose.Schema({
     available: Boolean,
     price: Number,
     hotel: {type: mongoose.Schema.ObjectId, ref: 'Hotel'},
+    user: { type: mongoose.Schema.ObjectId, ref: 'User' },
     history: [{ type: mongoose.Schema.ObjectId, ref: 'User' }]
 });
 
