@@ -13,5 +13,7 @@ api.delete('/deleteRoom/:id', [mdAuth.ensureAuth, mdAuth.isAdmin], RoomControlle
 
 //user
 api.get('/getRooms', mdAuth.ensureAuth, RoomController.getRooms);
+api.put('/reserveRoom/:id', mdAuth.ensureAuth, RoomController.reservation);
+api.put('/leaveRoom/:id', mdAuth.ensureAuth, RoomController.leaveRoom);
 
 module.exports = api;

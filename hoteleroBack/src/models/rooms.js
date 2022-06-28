@@ -9,7 +9,7 @@ const roomsModel = mongoose.Schema({
     price: Number,
     hotel: {type: mongoose.Schema.ObjectId, ref: 'Hotel'},
     user: { type: mongoose.Schema.ObjectId, ref: 'User' },
-    history: [{ type: mongoose.Schema.ObjectId, ref: 'User' }]
+    //history: [{ type: mongoose.Schema.ObjectId, ref: 'User' }]
 });
 
 module.exports = mongoose.model('Room', roomsModel);
