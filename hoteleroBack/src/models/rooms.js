@@ -7,8 +7,8 @@ const roomsModel = mongoose.Schema({
     description: String,
     available: Boolean,
     price: Number,
-    hotel: {type: mongoose.Schema.ObjectId, ref: 'Hotel'},
-    history: [{ type: mongoose.Schema.ObjectId, ref: 'User' }]
+    hotel: { type: mongoose.Schema.ObjectId, ref: 'Hotel' },
+    user: { type: mongoose.Schema.ObjectId, ref: 'User' },
 });
 
 module.exports = mongoose.model('Room', roomsModel);

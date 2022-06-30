@@ -19,6 +19,7 @@ api.get('/getUsers', [mdAuth.ensureAuth, mdAuth.isAdmin], userController.getUser
 api.get('/getUser/:id', [mdAuth.ensureAuth, mdAuth.isAdmin], userController.getUser);
 api.post('/createUser', [mdAuth.ensureAuth, mdAuth.isAdmin], userController.createUser);
 api.put('/updateUser/:id', [mdAuth.ensureAuth, mdAuth.isAdmin], userController.updateUser);
+api.delete('/deleteUser/:id', [mdAuth.ensureAuth, mdAuth.isAdmin], userController.deleteUser);
 
 
 module.exports = api;
