@@ -2,9 +2,11 @@
 
 const mongoose = require('mongoose');
 
-const invoiceModel = mongoose.Schema({
-    user: {type: mongoose.Schema.ObjectId, ref: 'User'},
+const historyModel = mongoose.Schema({
+    user: { type: mongoose.Schema.ObjectId, ref: 'User' },
     room: {type: mongoose.Schema.ObjectId, ref: 'Room'},
+    subtotal: Number,
+    times: Number,
 });
 
-module.exports = mongoose.model('Invoice', invoiceModel);
+module.exports = mongoose.model('History', historyModel);

@@ -8,6 +8,7 @@ const helmet = require('helmet');
 const userRoutes = require('../src/routes/user.routes');
 const hotelRoutes = require('../src/routes/hotel.routes');
 const roomRoutes = require('../src/routes/room.routes');
+const invoiceRoutes = require('../src/routes/invoice.routes');
 
 
 const app = express(); 
@@ -20,6 +21,7 @@ app.use(cors());
 app.use('/user', userRoutes);
 app.use('/hotel', hotelRoutes);
 app.use('/room', roomRoutes);
+app.use('/invoice', invoiceRoutes);
 
 
 

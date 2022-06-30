@@ -1,7 +1,7 @@
 'use strict'
 
 const Room = require('../models/rooms');
-const History = require('../controllers/history.controller')
+const History = require('./invoice.controller')
 const { validateData } = require('../utils/validate');
 
 exports.createRoom = async (req, res) => {
