@@ -12,6 +12,14 @@ export class UserRestService {
 
   constructor(private http: HttpClient) { }
 
+  register(params: {}){
+    return this.http.post(environment.baseUri + 'user/register', params, { headers: this.httpOptions});
+  }
+
+  login(params: {}){
+    return this.http.post(environment.baseUri + 'user/login', params, { headers: this.httpOptions});
+  }
+
   getToken() {
     let globalToken = localStorage.getItem('token');
     let token;
