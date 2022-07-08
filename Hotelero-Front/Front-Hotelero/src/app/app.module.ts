@@ -12,6 +12,8 @@ import { HistoryComponent } from './components/history/history.component';
 import { UsersComponent } from './components/users/users.component';
 import { InvoiceComponent } from './components/invoice/invoice.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
+import { HomeComponent } from './components/home/home.component';
+import { RoomsComponent } from './components/rooms/rooms.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
@@ -26,7 +28,9 @@ import { FormsModule } from '@angular/forms';
     HistoryComponent,
     UsersComponent,
     InvoiceComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    HomeComponent,
+    RoomsComponent
   ],
   imports: [
     BrowserModule,

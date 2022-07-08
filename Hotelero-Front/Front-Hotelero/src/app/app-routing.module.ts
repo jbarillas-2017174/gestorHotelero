@@ -7,6 +7,8 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UsersComponent } from './components/users/users.component';
+import { HomeComponent } from './components/home/home.component';
+import { RoomsComponent } from './components/rooms/rooms.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -15,6 +17,8 @@ const routes: Routes = [
   {path: 'history', component: HistoryComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'invoice', component: InvoiceComponent},
+  {path: 'home', component: HomeComponent},
+  {path: 'rooms', component: RoomsComponent},
   {path: '**', component: NotfoundComponent}
 ];
 
