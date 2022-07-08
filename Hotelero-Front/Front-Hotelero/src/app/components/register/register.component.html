@@ -13,20 +13,26 @@
                                     <h4 class="mt-1 mb-5 pb-1">Login</h4>
                                 </div>
 
-                                <form>
+                                <form (ngSubmit)="register(registerForm)" #registerForm="ngForm">
 
                                     <div class="row">
                                         <div class="col-md-6 mb-4">
                                             <div class="form-outline">
-                                                <input type="text" id="form2Example22" class="form-control"
-                                                    placeholder="Name" />
+                                                <span *ngIf="!name.valid && name.touched" class="requiredField" style="color: #f98a13;">
+                                                    Required field
+                                                  </span>
+                                                <input [(ngModel)]="userM.name" #name="ngModel" name="name" type="text" id="3" class="form-control"
+                                                    placeholder="Name" required/>
                                                 <label class="form-label" for="form3Example1m">Name</label>
                                             </div>
                                         </div>
                                         <div class="col-md-6 mb-4">
                                             <div class="form-outline">
-                                                <input type="text" id="form2Example22" class="form-control"
-                                                    placeholder="Username" />
+                                                <span *ngIf="!username.valid && username.touched" class="requiredField" style="color: #f98a13;">
+                                                    Required field
+                                                  </span>
+                                                <input [(ngModel)]="userM.username" #username="ngModel" name="username" type="text" id="4" class="form-control"
+                                                    placeholder="Username" required/>
                                                 <label class="form-label" for="form3Example1n">Username</label>
                                             </div>
                                         </div>
@@ -35,23 +41,32 @@
                                     <div class="row">
                                         <div class="col-md-6 mb-4">
                                             <div class="form-outline">
-                                                <input type="text" id="form2Example22" class="form-control"
-                                                    placeholder="Email" />
+                                                <span *ngIf="!email.valid && email.touched" class="requiredField" style="color: #f98a13;">
+                                                    Required field
+                                                  </span>
+                                                <input [(ngModel)]="userM.email" #email="ngModel" name="email" type="text" id="5" class="form-control"
+                                                    placeholder="Email" required/>
                                                 <label class="form-label" for="form3Example1m1">Email</label>
                                             </div>
                                         </div>
                                         <div class="col-md-6 mb-4">
                                             <div class="form-outline">
-                                                <input type="password" id="form2Example22" class="form-control"
-                                                    placeholder="Password" />
+                                                <span *ngIf="!password.valid && password.touched" class="requiredField" style="color: #f98a13;">
+                                                    Required field
+                                                  </span>
+                                                <input [(ngModel)]="userM.password" #password="ngModel" name="password" type="password" id="6" class="form-control"
+                                                    placeholder="Password" required/>
                                                 <label class="form-label" for="form3Example1n1">Password</label>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="form-outline mb-4">
-                                        <input type="text" id="form2Example22" class="form-control"
-                                            placeholder="Details" />
+                                        <span *ngIf="!details.valid && details.touched" class="requiredField" style="color: #f98a13;">
+                                            Required field
+                                          </span>
+                                        <input [(ngModel)]="userM.details" #details="ngModel" name="details" type="text" id="form2Example22" class="form-control"
+                                            placeholder="Details" required />
                                         <label class="form-label" for="form3Example8">Details</label>
                                     </div>
 
@@ -59,7 +74,7 @@
                                         <button class="btn btn-outline-secondary btn-block fa-lg m-3 "
                                             type="button" routerLink="/login">Cancel</button>
                                         <button class="btn btn-outline-success btn-block fa-lg m-3"
-                                            type="button">Register</button>
+                                            type="submit">Register</button>
                                     </div>
 
                                 </form>
