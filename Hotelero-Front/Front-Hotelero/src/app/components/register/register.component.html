@@ -1,0 +1,93 @@
+<section class="h-100 gradient-form " style="background-image: url(../../../assets/img/cityBack.png); background-size: cover;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-xl-10">
+                <div class="card rounded-3 text-black shadow-lg p-2 mb-4 bg-white rounded">
+                    <div class="row g-0">
+                        <div class="col-lg-6">
+                            <div class="card-body p-md-5 mx-md-4">
+
+                                <div class="text-center">
+                                    <img src="https://1000marcas.net/wp-content/uploads/2021/05/Trivago-logo.png"
+                                        style="width: 185px;" alt="logo">
+                                    <h4 class="mt-1 mb-5 pb-1">Login</h4>
+                                </div>
+
+                                <form (ngSubmit)="register(registerForm)" #registerForm="ngForm">
+
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-outline">
+                                                <span *ngIf="!name.valid && name.touched" class="requiredField" style="color: #f98a13;">
+                                                    Required field
+                                                  </span>
+                                                <input [(ngModel)]="userM.name" #name="ngModel" name="name" type="text" id="3" class="form-control"
+                                                    placeholder="Name" required/>
+                                                <label class="form-label" for="form3Example1m">Name</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-outline">
+                                                <span *ngIf="!username.valid && username.touched" class="requiredField" style="color: #f98a13;">
+                                                    Required field
+                                                  </span>
+                                                <input [(ngModel)]="userM.username" #username="ngModel" name="username" type="text" id="4" class="form-control"
+                                                    placeholder="Username" required/>
+                                                <label class="form-label" for="form3Example1n">Username</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-outline">
+                                                <span *ngIf="!email.valid && email.touched" class="requiredField" style="color: #f98a13;">
+                                                    Required field
+                                                  </span>
+                                                <input [(ngModel)]="userM.email" #email="ngModel" name="email" type="text" id="5" class="form-control"
+                                                    placeholder="Email" required/>
+                                                <label class="form-label" for="form3Example1m1">Email</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-outline">
+                                                <span *ngIf="!password.valid && password.touched" class="requiredField" style="color: #f98a13;">
+                                                    Required field
+                                                  </span>
+                                                <input [(ngModel)]="userM.password" #password="ngModel" name="password" type="password" id="6" class="form-control"
+                                                    placeholder="Password" required/>
+                                                <label class="form-label" for="form3Example1n1">Password</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <span *ngIf="!details.valid && details.touched" class="requiredField" style="color: #f98a13;">
+                                            Required field
+                                          </span>
+                                        <input [(ngModel)]="userM.details" #details="ngModel" name="details" type="text" id="form2Example22" class="form-control"
+                                            placeholder="Details" required />
+                                        <label class="form-label" for="form3Example8">Details</label>
+                                    </div>
+
+                                    <div class="text-center pt-1 mb-5 pb-1">
+                                        <button class="btn btn-outline-secondary btn-block fa-lg m-3 "
+                                            type="button" routerLink="/login">Cancel</button>
+                                        <button class="btn btn-outline-success btn-block fa-lg m-3"
+                                            type="submit">Register</button>
+                                    </div>
+
+                                </form>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+                            <img src="https://enhoteleseconomicos.com/wp-content/uploads/2019/05/Urban-600x700.jpg"
+                                class="img-fluid" alt="img_Hotel" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
