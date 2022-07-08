@@ -13,22 +13,28 @@
                                     <h4 class="mt-1 mb-5 pb-1">Login</h4>
                                 </div>
 
-                                <form>
+                                <form (ngSubmit)="login(loginForm)" #loginForm="ngForm" class="form">
 
                                     <div class="form-outline mb-4">
-                                        <input type="email" id="form2Example11" style="width: 350px" class="form-control"
+                                        <span *ngIf="!username.valid && username.touched" class="requiredField">
+                                            Required field
+                                          </span>
+                                        <input [(ngModel)]="userM.username" #username="ngModel" name="username" type="email" id="form2Example11" style="width: 350px" class="form-control"
                                             placeholder="Write your username" />
                                         <label class="form-label" for="form2Example11">Username</label>
                                     </div>
 
                                     <div class="form-outline mb-4">
-                                        <input type="password" id="form2Example22" style="width: 350px" class="form-control"
+                                        <span *ngIf="!password.valid && password.touched" class="requiredField">
+                                            Required field
+                                          </span>
+                                        <input [(ngModel)]="userM.password" #password="ngModel" name="password" type="password" id="form2Example22" style="width: 350px" class="form-control"
                                             placeholder="Write your password" />
                                         <label class="form-label" for="form2Example22">Password</label>
                                     </div>
 
                                     <div class="text-center pt-1 mb-5 pb-1">
-                                        <button class="btn btn-primary btn-block fa-lg mb-3" type="button">Log
+                                        <button class="btn btn-primary btn-block fa-lg mb-3" type="submit">Log
                                             in</button>
                                     </div>
 
