@@ -3,8 +3,8 @@
     <div class="title" style="width: 70%;">
       <h3>- Home -</h3>
     </div>
-    <div class="title" style="width: 70%;">
-      <button type="button" class="btn btn-dark">Add Hotel</button>
+    <div class="title text-center" style="width: 70%;">
+      <button type="button" class="btn btn-dark" data-bs-target="#addOffice" data-bs-toggle="modal">Add Hotel</button>
     </div>
     <div class="title" style="width: 70;">
         <div class="container-fluid">
@@ -15,8 +15,10 @@
         </div>
     </div>
   </div>
+<hr>
+  <div> </div>
   
-<!--Room One-->   
+<!--Room One-->  
   <div *ngFor="let hViewh of hotels"  class="container ">
     <div class="card"
       style="background-image: url('https://memoflores.com/fotos-de-hoteles-05.jpg'); max-height: 30%; cursor:pointer;">
@@ -24,6 +26,7 @@
         <h3 class="text-white mb-3">{{ hViewh.name}}  </h3>
         <p class="text-white">{{hViewh.address}}</p>
         <div class="position-absolute bottom-0 end-0 m-2">
+          
           <svg style="margin-right: 7%; cursor: pointer; color: #fff;" xmlns="http://www.w3.org/2000/svg" width="35"
             height="35" fill="currentColor" class="bi bi-trash2-fill mb-1" viewBox="0 0 16 16">
             <path
@@ -39,5 +42,48 @@
       </div>
     </div>
   </div>
- 
 
+
+<!------------------- Modal -------------------->
+  <div class="modal" id="addOffice">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Hotel</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+
+                <form (ngSubmit)="saveHotels(saveForm)" #saveForm="ngForm">
+
+<!--ContenidoModal-->
+                    <div class="form-group">
+                        <label for="nameOffice" class="form-label mt-4">Name</label>
+                        <input [(ngModel)]="VwHotels.name" name="name" type="text" name="name" class="form-control" id="nameOffice"
+                            aria-describedby="emailHelp" placeholder="Enter name Hotel">
+                    </div>
+                    <div class="form-group">
+                      <label for="addressOffice" class="form-label mt-4">Description</label>
+                      <input [(ngModel)]="VwHotels.description" name=" description" type="text" class="form-control" id="addressOffice"
+                          name="address" placeholder="Enter address">
+                  </div>
+                    <div class="form-group">
+                        <label for="addressOffice" class="form-label mt-4">Address</label>
+                        <input [(ngModel)]="VwHotels.address" name="address"  type="text" class="form-control" id="addressOffice"
+                            name="address" placeholder="Enter address">
+                    </div>
+<!--ContenidoModal-->
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary"
+                            data-bs-dismiss="modal">Save changes</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

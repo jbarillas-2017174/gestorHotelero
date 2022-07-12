@@ -24,4 +24,9 @@ export class HomeRestService {
   }
 
 
+  addHotels(params:{}){
+    return this.http.post(environment.baseUri + 'hotel/addHotel', params, {headers: this.httpOptions});
+  }
+
+
 }

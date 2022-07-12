@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeRestService } from 'src/app/services/homeRest/home-rest.service';
-
+import { ModelHotel } from 'src/app/models/hotel.model';
 
 @Component({
   selector: 'app-home',
@@ -9,10 +9,13 @@ import { HomeRestService } from 'src/app/services/homeRest/home-rest.service';
 })
 export class HomeComponent implements OnInit {
   hotels:any
+  VwHotels: ModelHotel
 
   constructor(
     private homeRest: HomeRestService
-  ) { }
+  ) { 
+    this.VwHotels = new ModelHotel('','','','');
+  }
 
   ngOnInit(): void {
     this.getHotelsView();
@@ -25,4 +28,15 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  saveHotels(saveForm:any){
+    this.homeRest.addHotels(this.VwHotels).subscribe({
+      next: (res:any)=> {
+        alert(res.message)
+        this.getHotelsView();
+      }, 
+      error: (err)=> alert(err.error.message || err.error)
+    })
+  }
+
 }
+

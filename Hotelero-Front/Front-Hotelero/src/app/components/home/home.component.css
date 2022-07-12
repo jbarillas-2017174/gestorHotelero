@@ -36,12 +36,22 @@
 }
 
 .container {
-
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	gap: 20px;
     width: 90%;
     padding: 40px 0;
+}
+
+.card {
+	border-radius: 10px;
+	min-height: 200px;
+	font-weight: bold;
+	padding: 20px;
+	position: relative;
+	overflow: hidden;
+	background-size: cover;
+	background-position: center center;
 }
 
 @media (max-width: 1100px) {
@@ -51,4 +61,10 @@
 		gap: 20px;
 		justify-content: center;
 	}
+}
+
+.contenedor-hoteles{
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap:20px;
 }
