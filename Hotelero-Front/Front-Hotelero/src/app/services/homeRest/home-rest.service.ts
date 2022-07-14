@@ -28,5 +28,16 @@ export class HomeRestService {
     return this.http.post(environment.baseUri + 'hotel/addHotel', params, {headers: this.httpOptions});
   }
 
+  /* Parte Editar un hotel*/
+  getHotel(id: string){
+    return this.http.get(environment.baseUri + 'hotel/getHotel/' +id, {headers: this.httpOptions});
+  }
 
+  updateHotel(id:string, params:{}){
+    return this.http.put(environment.baseUri + 'hotel/updateHotel/' + id, params, {headers: this.httpOptions});
+  }
+
+  deleteHotel(id:string){
+    return this.http.delete(environment.baseUri + 'hotel/deleteHotel/' + id, {headers: this.httpOptions});
+  }
 }
