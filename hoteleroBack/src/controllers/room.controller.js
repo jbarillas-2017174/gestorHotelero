@@ -31,7 +31,7 @@ exports.createRoom = async (req, res) => {
 exports.getRooms = async (req, res) => {
     try {
         const hotelId = req.params.id;
-        const room = await Room.find({hotel: hotelId});
+        const room = await Room.find({});
         if (!room) return res.status(404).send({ message: 'Rooms not found' });
         return res.send({ message: 'Rooms found: ', room });
     } catch (err) {
