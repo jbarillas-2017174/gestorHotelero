@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { RoomsComponent } from './components/rooms/rooms.component';
 
 const routes: Routes = [
+  {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'users', component: UsersComponent},
@@ -18,7 +19,7 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent},
   {path: 'invoice', component: InvoiceComponent},
   {path: 'home', component: HomeComponent},
-  {path: 'rooms', component: RoomsComponent},
+  {path: 'rooms/:id', component: RoomsComponent},
   {path: '**', component: NotfoundComponent}
 ];
 

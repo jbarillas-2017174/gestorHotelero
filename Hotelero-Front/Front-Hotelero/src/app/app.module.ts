@@ -16,6 +16,9 @@ import { HomeComponent } from './components/home/home.component';
 import { RoomsComponent } from './components/rooms/rooms.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { SearchHomePipe } from './pipes/search-home.pipe';
+import { ViewHotelComponent } from './components/view-hotel/view-hotel.component';
+import { SearchAddressPipe } from './pipes/search-address.pipe';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { FormsModule } from '@angular/forms';
     InvoiceComponent,
     NotfoundComponent,
     HomeComponent,
-    RoomsComponent
+    RoomsComponent,
+    SearchHomePipe,
+    ViewHotelComponent,
+    SearchAddressPipe
   ],
   imports: [
     BrowserModule,
