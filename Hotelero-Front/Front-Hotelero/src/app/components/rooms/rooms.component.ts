@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class RoomsComponent implements OnInit {
   idHotel: any
   rooms: ModelRooms
-  room: any
+  roomsHotel: any
 
 
   constructor(public activatedRoute: ActivatedRoute,
@@ -22,16 +22,14 @@ export class RoomsComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((id: any) => {
       this.idHotel = id.get('id');
-      console.log(this.idHotel)
-
     })
     this.getRooms();
   }
 
   getRooms() {
-    this.roomRest.getRooms().subscribe({
-      next: (res:any) =>console.log(res),
-      error: (err)=>alert(err.error.message || err.error)
+    this.roomRest.getRooms(this.idHotel).subscribe({
+      next: (res: any) => this.roomsHotel = res.room,
+      error: (err) => alert(err.error.message || err.error)
     })
   }
 

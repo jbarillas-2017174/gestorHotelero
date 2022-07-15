@@ -11,12 +11,12 @@
     </div>
 </div>
   
-  <div class="container">
-    <div class="card"
+  <div class="container" >
+    <div class="card" *ngFor="let r of roomsHotel"
       style="background-image: url('https://pbs.twimg.com/profile_images/1384138428648812545/995HUap6_400x400.jpg'); max-height: 30%; cursor:pointer;">
       <div class="text">
-        <h3 class="text-white mb-3">Room #</h3>
-        <p class="text-white">Room #</p>
+        <h3 class="text-white text-center mb-3 w-100 h-25" >Room #{{r.roomNum}}</h3>
+        <button type="button" class="btn btn-info w-25">Reserve</button>
         <div class="position-absolute bottom-0 end-0 m-2">
           <svg style="margin-right: 7%; cursor: pointer; color: #fff;" xmlns="http://www.w3.org/2000/svg" width="35"
             height="35" fill="currentColor" class="bi bi-trash2-fill mb-1" viewBox="0 0 16 16">

@@ -17,27 +17,27 @@ export class RoomsRestService {
     private userRest: UserRestService
   ) { }
 
-    getRooms(){
-      return this.http.get(environment.baseUri + 'rooms/getRooms', {headers: this.httpOptions});
-    }
+  getRooms(id: String) {
+    return this.http.get(environment.baseUri + 'room/getRooms/' + id, { headers: this.httpOptions });
+  }
 
-    addRoom(id:String, params:{}){
-      return this.http.post(environment.baseUri + 'rooms/saveRoom/' + id, params, {headers: this.httpOptions});
-    }
+  addRoom(id: String, params: {}) {
+    return this.http.post(environment.baseUri + 'room/saveRoom/' + id, params, { headers: this.httpOptions });
+  }
 
-    deleteRoom(id:String){
-      return this.http.delete(environment.baseUri + 'rooms/deleteRoom/' + id, {headers: this.httpOptions});
-    }
+  deleteRoom(id: String) {
+    return this.http.delete(environment.baseUri + 'room/deleteRoom/' + id, { headers: this.httpOptions });
+  }
 
-    updateRoom(id:String, params:{}){
-      return this.http.put(environment.baseUri + 'rooms/udateRoom/' + id, params, {headers: this.httpOptions})
-    }
+  updateRoom(id: String, params: {}) {
+    return this.http.put(environment.baseUri + 'room/udateRoom/' + id, params, { headers: this.httpOptions })
+  }
 
-    leaveRoom(id:String){
-      return this.http.put(environment.baseUri + 'rooms/leaveRoom/' + id, {headers: this.httpOptions});
-    }
+  leaveRoom(id: String) {
+    return this.http.put(environment.baseUri + 'room/leaveRoom/' + id, { headers: this.httpOptions });
+  }
 
-    reserveRoom(id:String){
-      return this.http.put(environment.baseUri + 'rooms/reserveRoom/' + id, {headers: this.httpOptions});
-    }
+  reserveRoom(id: String) {
+    return this.http.put(environment.baseUri + 'room/reserveRoom/' + id, { headers: this.httpOptions });
+  }
 }
