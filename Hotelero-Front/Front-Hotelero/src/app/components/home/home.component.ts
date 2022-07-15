@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   hotels:any
   VwHotels: ModelHotel
   hotelsUpdate: any
+  search:any
 
 
   constructor(
