@@ -1,18 +1,18 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'searchHome'
+  name: 'search'
 })
 export class SearchHomePipe implements PipeTransform {
 
-  transform(hotels:any, searchHome:any){;
-    if(searchHome == undefined){
+  transform(hotels:any, search:any ){
+    if(search== undefined){
         return hotels;
     }else{
-      
+
     }
     return hotels.filter( (pHotels:any) => {
-        return pHotels.name.toLowerCase().includes(searchHome.toLowerCase())
+        return pHotels.name.toLowerCase().includes(search.toLowerCase()) || pHotels.address.toLowerCase().includes(search.toLowerCase())
     })
   }
 }

@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { SearchHomePipe } from './pipes/search-home.pipe';
 import { ViewHotelComponent } from './components/view-hotel/view-hotel.component';
+import { SearchAddressPipe } from './pipes/search-address.pipe';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ViewHotelComponent } from './components/view-hotel/view-hotel.component
     HomeComponent,
     RoomsComponent,
     SearchHomePipe,
-    ViewHotelComponent
+    ViewHotelComponent,
+    SearchAddressPipe
   ],
   imports: [
     BrowserModule,
