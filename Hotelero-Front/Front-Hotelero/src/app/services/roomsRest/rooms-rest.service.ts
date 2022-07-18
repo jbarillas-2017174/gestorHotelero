@@ -21,7 +21,11 @@ export class RoomsRestService {
     return this.http.get(environment.baseUri + 'room/getRooms/' + id, { headers: this.httpOptions });
   }
 
-  addRoom(id: String, params: {}) {
+  getRoom(id: string){
+    return this.http.get(environment.baseUri + 'room/getRoom/' +id, {headers: this.httpOptions});
+  }
+
+  saveRoom(id: String, params: {}) {
     return this.http.post(environment.baseUri + 'room/saveRoom/' + id, params, { headers: this.httpOptions });
   }
 
