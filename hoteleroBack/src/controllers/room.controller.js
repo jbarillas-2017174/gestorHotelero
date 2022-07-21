@@ -17,7 +17,7 @@ exports.createRoom = async (req, res) => {
         }
         const msg = validateData(data);
         if (msg) return res.status(400).send(msg);
-        const already = await Room.findOne({ roomNum: params.roomNum });
+        const already = await Room.findOne({ roomNum: params.roomNum, hotel: hotelId});
         if (already) return res.status(400).send({ message: 'Room already exist' });
         const rooms = new Room(data);
         await rooms.save();
