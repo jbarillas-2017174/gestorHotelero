@@ -14,6 +14,7 @@ export class RoomsComponent implements OnInit {
   idHotel: any
   rooms: any
   newRoom: any
+  roomUpdate: any
 
   constructor(
     private roomRest: RoomRestService,
@@ -65,7 +66,7 @@ export class RoomsComponent implements OnInit {
   getRoom(id: String) {
     this.roomRest.getRoom(id).subscribe({
       next: (res: any) => {
-        this.newRoom = res.room
+        this.roomUpdate = res.room
       },
       error: (err) => Swal.fire({
         icon: 'error',
@@ -95,4 +96,70 @@ export class RoomsComponent implements OnInit {
       })
     })
   }
+
+  leaveRoom(id:String){
+    this.roomRest.leaveRoom(id, '').subscribe({
+      next: (res:any)=> {
+        this.getRooms();
+        Swal.fire({
+          icon: 'success',
+          title: res.message,
+          showConfirmButton: false,
+          timer: 1000
+        })
+      },
+      error: (err)=> Swal.fire({
+        icon: 'error',
+        title: err.error.message || err.error,
+        showConfirmButton: false,
+        timer: 2000
+      })
+    })
+  }
+
+  updateRoom(){
+    this.roomRest.updateRoom(this.roomUpdate._id, this.roomUpdate).subscribe({
+      next: (res: any)=>{
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: res.message,
+          showConfirmButton: false,
+          timer: 1000
+        });
+        this.getRooms();
+      },
+      error: (err)=> Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: err.error.message,
+        showConfirmButton: false,
+        timer: 1000
+      })
+    })
+  }
+
+  deleteRoom(id:String){
+    this.roomRest.deleteRoom(id).subscribe({
+      next: (res:any)=>{
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: res.message,
+          showConfirmButton: false,
+          timer: 1000
+        });
+        this.getRooms();
+      },
+      error: (err)=> Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: err.error.message,
+        showConfirmButton: false,
+        timer: 1000
+      })
+    })
+  }
+
+
 }
