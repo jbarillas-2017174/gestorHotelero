@@ -13,7 +13,7 @@ api.delete('/deleteRoom/:id', [mdAuth.ensureAuth, mdAuth.isAdmin], RoomControlle
 api.post('/addService/:id', [mdAuth.ensureAuth, mdAuth.isAdmin], RoomController.addService);
 
 //user
-api.get('/getRooms', mdAuth.ensureAuth, RoomController.getRooms);
+api.get('/getRooms/:id', mdAuth.ensureAuth, RoomController.getRooms);
 api.put('/reserveRoom/:id', mdAuth.ensureAuth, RoomController.reservation);
 api.put('/leaveRoom/:id', mdAuth.ensureAuth, RoomController.leaveRoom);
 
