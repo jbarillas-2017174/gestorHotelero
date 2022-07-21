@@ -10,9 +10,10 @@ api.post('/saveRoom/:id', [mdAuth.ensureAuth, mdAuth.isAdmin], RoomController.cr
 api.get('/getRoom/:id', [mdAuth.ensureAuth, mdAuth.isAdmin], RoomController.getRoom);
 api.put('/updateRoom/:id', [mdAuth.ensureAuth, mdAuth.isAdmin], RoomController.updateRoom);
 api.delete('/deleteRoom/:id', [mdAuth.ensureAuth, mdAuth.isAdmin], RoomController.deleteRoom);
+api.post('/addService/:id', [mdAuth.ensureAuth, mdAuth.isAdmin], RoomController.addService);
 
 //user
-api.get('/getRooms', mdAuth.ensureAuth, RoomController.getRooms);
+api.get('/getRooms/:id', mdAuth.ensureAuth, RoomController.getRooms);
 api.put('/reserveRoom/:id', mdAuth.ensureAuth, RoomController.reservation);
 api.put('/leaveRoom/:id', mdAuth.ensureAuth, RoomController.leaveRoom);
 

@@ -31,7 +31,7 @@ exports.createRoom = async (req, res) => {
 exports.getRooms = async (req, res) => {
     try {
         const hotelId = req.params.id;
-        const room = await Room.find({hotel: hotelId});
+        const room = await Room.find({ hotel: hotelId });
         if (!room) return res.status(404).send({ message: 'Rooms not found' });
         return res.send({ message: 'Rooms found: ', room });
     } catch (err) {
@@ -86,18 +86,18 @@ exports.reservation = async (req, res) => {
     try {
         const roomId = req.params.id;
         const room = await Room.findOne({ _id: roomId });
-        if(room.available == false) return res.status(400).send({message: 'Occupied room'});
+        if (room.available == false) return res.status(400).send({ message: 'Occupied room' });
         const data = {
             available: false,
             user: req.user.sub,
         }
         if (!room) return res.status(404).send({ message: 'Room not found' });
-        const reservation = await Room.findOneAndUpdate({_id: roomId}, data, {new: true});
-        if(!reservation) return res.status(500).send({message: 'Cannot reserve this room'});
+        const reservation = await Room.findOneAndUpdate({ _id: roomId }, data, { new: true });
+        if (!reservation) return res.status(500).send({ message: 'Cannot reserve this room' });
         //update $push:user
         //await Room.findOneAndUpdate({_id: roomId}, {$push: {history: [{user: data.user, total: room.price}]}})
         History.createHistory(req, res, roomId, data.user, room.price);
-        return res.send({message: 'Room reserved', reservation});
+        return res.send({ message: 'Room reserved', reservation });
     } catch (err) {
         console.log(err);
         return res.status(500).send(err);
@@ -113,9 +113,39 @@ exports.leaveRoom = async (req, res) => {
             user: null,
         }
         if (!room) return res.status(404).send({ message: 'Room not found' });
-        const reservation = await Room.findOneAndUpdate({_id: roomId}, data, {new: true});
-        if(!reservation) return res.status(500).send({message: 'Cannot leave this room'});
-        return res.send({message: 'Goodbye'});
+        const reservation = await Room.findOneAndUpdate({ _id: roomId }, data, { new: true });
+        if (!reservation) return res.status(500).send({ message: 'Cannot leave this room' });
+        return res.send({ message: 'Goodbye' });
+    } catch (err) {
+        console.log(err);
+        return res.status(500).send(err);
+    }
+}
+
+exports.addService = async (req, res) => {
+    try {
+        const roomId = req.params.id;
+        const data = {
+            service: req.body.service
+        }
+        let alreadyService = false;
+        const msg = validateData(data);
+        if (msg) return res.status(400).send(msg);
+        const room = await Room.findOne({ _id: roomId });
+
+        for (let ser of room.services) {
+            if (ser.service == data.service) {
+                alreadyService = true;
+                
+            }
+        }
+        
+        if (alreadyService == true) return res.status(400).send({ message: 'Service already added' });
+        if (!room) return res.status(404).send({ message: 'Room not found' });
+        //await Room.findOneAndUpdate({_id: roomId}, {$push: {history: [{user: data.user, total: room.price}]}})
+        const updated = await Room.findOneAndUpdate({ _id: roomId }, { $push: { services: [{ service: data.service }] } }, { new: true });
+        if (!updated) return res.status(500).send({ message: 'Cannot add this service' });
+        return res.send({ message: 'Service added' });
     } catch (err) {
         console.log(err);
         return res.status(500).send(err);

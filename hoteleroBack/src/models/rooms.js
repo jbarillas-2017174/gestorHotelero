@@ -9,6 +9,11 @@ const roomsModel = mongoose.Schema({
     price: Number,
     hotel: { type: mongoose.Schema.ObjectId, ref: 'Hotel' },
     user: { type: mongoose.Schema.ObjectId, ref: 'User' },
+    services: [
+        {
+            service: { type: mongoose.Schema.ObjectId, ref: 'Service' }
+        }
+    ]
 });
 
 module.exports = mongoose.model('Room', roomsModel);
