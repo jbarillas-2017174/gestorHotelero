@@ -29,7 +29,7 @@ export class RoomsComponent implements OnInit {
     this.getRooms()
   }
 
-  saveRoom() {
+  saveRoom(addRoom: any) {
     this.roomRest.saveRoom(this.idHotel, this.room).subscribe({
       next: (res: any) => {
         this.getRooms();
@@ -39,6 +39,7 @@ export class RoomsComponent implements OnInit {
           showConfirmButton: false,
           timer: 1000
         })
+        addRoom.reset();
       },
       error: (err) => Swal.fire({
         icon: 'error',
