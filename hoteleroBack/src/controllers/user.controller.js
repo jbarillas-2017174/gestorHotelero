@@ -192,3 +192,22 @@ exports.deleteUser = async (req, res) => {
         return res.status(500).send(err);
     }
 }
+
+
+exports.createAdmin = async (req, res) => {
+    try {
+        if (await User.find() == '' || !await User.findOne({ username: 'Admin' })) {
+            const data = {
+                username: 'Admin',
+                password: '123',
+                role: 'ADMIN'
+            }
+            data.password = await encrypt(data.password)
+            const admin = new User(data);
+            await admin.save();
+        }
+    } catch (err) {
+        console.log(err);
+        return res.status(500).send({ message: 'Error saving ADMIN' })
+    }
+}
