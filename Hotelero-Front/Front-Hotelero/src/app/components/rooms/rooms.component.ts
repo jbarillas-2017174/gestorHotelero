@@ -97,9 +97,9 @@ export class RoomsComponent implements OnInit {
     })
   }
 
-  leaveRoom(id:String){
+  leaveRoom(id: String) {
     this.roomRest.leaveRoom(id, '').subscribe({
-      next: (res:any)=> {
+      next: (res: any) => {
         this.getRooms();
         Swal.fire({
           icon: 'success',
@@ -108,7 +108,7 @@ export class RoomsComponent implements OnInit {
           timer: 1000
         })
       },
-      error: (err)=> Swal.fire({
+      error: (err) => Swal.fire({
         icon: 'error',
         title: err.error.message || err.error,
         showConfirmButton: false,
@@ -117,9 +117,9 @@ export class RoomsComponent implements OnInit {
     })
   }
 
-  updateRoom(){
+  updateRoom() {
     this.roomRest.updateRoom(this.roomUpdate._id, this.roomUpdate).subscribe({
-      next: (res: any)=>{
+      next: (res: any) => {
         Swal.fire({
           position: 'center',
           icon: 'success',
@@ -129,7 +129,7 @@ export class RoomsComponent implements OnInit {
         });
         this.getRooms();
       },
-      error: (err)=> Swal.fire({
+      error: (err) => Swal.fire({
         icon: 'error',
         title: 'Oops...',
         text: err.error.message,
@@ -139,9 +139,9 @@ export class RoomsComponent implements OnInit {
     })
   }
 
-  deleteRoom(id:String){
+  deleteRoom(id: String) {
     this.roomRest.deleteRoom(id).subscribe({
-      next: (res:any)=>{
+      next: (res: any) => {
         Swal.fire({
           position: 'center',
           icon: 'success',
@@ -151,7 +151,7 @@ export class RoomsComponent implements OnInit {
         });
         this.getRooms();
       },
-      error: (err)=> Swal.fire({
+      error: (err) => Swal.fire({
         icon: 'error',
         title: 'Oops...',
         text: err.error.message,

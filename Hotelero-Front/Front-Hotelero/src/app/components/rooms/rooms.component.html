@@ -19,8 +19,8 @@
       <h6 class="text-white mb-3 text-center">Type: {{r.description}}</h6>
       <h6 class="text-white mb-3 text-center">Available: {{r.available}}</h6>
       <h6 class="text-white mb-3 text-center">Price: Q.{{r.price}}</h6>
-      <button class="btn btn-info" style="max-width: 150px;" (click)="reserveRoom(r._id)">Reserve</button> <br>
-      <button class="btn btn-info" style="max-width: 150px;" (click)="leaveRoom(r._id)">Leave</button>
+      <button class="btn btn-info" style="max-width: 150px;" (click)="reserveRoom(r._id)" *ngIf="r.available === true">Reserve</button> <br>
+      <button class="btn btn-secondary" style="max-width: 150px;" (click)="leaveRoom(r._id)" *ngIf="r.available === false">Leave</button>
       <div class="position-absolute bottom-0 end-0 m-2">
         <svg style="margin-right: 7%; cursor: pointer; color: #fff;" xmlns="http://www.w3.org/2000/svg" width="35"
           height="35" fill="currentColor" class="bi bi-trash2-fill mb-1" viewBox="0 0 16 16" (click)="deleteRoom(r._id)">
