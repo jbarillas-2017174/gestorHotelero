@@ -1,0 +1,59 @@
+<section class="h-100 gradient-form " style="background-image: url(../../../assets/img/cityBack.png); background-size: cover;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100 ">
+            <div class="col-xl-10">
+                <div class="card rounded-3 text-black shadow-lg p-2 mb-4 bg-white rounded">
+                    <div class="row g-0">
+                        <div class="col-lg-6">
+                            <div class="card-body p-md-5 mx-md-4">
+
+                                <div class="text-center">
+                                    <img src="https://1000marcas.net/wp-content/uploads/2021/05/Trivago-logo.png"
+                                        style="width: 185px;" alt="logo">
+                                    <h4 class="mt-1 mb-5 pb-1">Login</h4>
+                                </div>
+
+                                <form (ngSubmit)="login(loginForm)" #loginForm="ngForm" class="form">
+
+                                    <div class="form-outline mb-4">
+                                        <span *ngIf="!username.valid && username.touched" class="requiredField">
+                                            Required field
+                                          </span>
+                                        <input [(ngModel)]="userM.username" #username="ngModel" name="username" type="email" id="form2Example11" style="width: 350px" class="form-control"
+                                            placeholder="Write your username" />
+                                        <label class="form-label" for="form2Example11">Username</label>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <span *ngIf="!password.valid && password.touched" class="requiredField">
+                                            Required field
+                                          </span>
+                                        <input [(ngModel)]="userM.password" #password="ngModel" name="password" type="password" id="form2Example22" style="width: 350px" class="form-control"
+                                            placeholder="Write your password" />
+                                        <label class="form-label" for="form2Example22">Password</label>
+                                    </div>
+
+                                    <div class="text-center pt-1 mb-5 pb-1">
+                                        <button class="btn btn-primary btn-block fa-lg mb-3" type="submit">Log
+                                            in</button>
+                                    </div>
+
+                                    <div class="d-flex align-items-center justify-content-center pb-4">
+                                        <p class="mb-0 me-2">Don't have an account?</p>
+                                        <button type="button" class="btn btn-outline-danger" routerLink="/register">Create new</button>
+                                    </div>
+
+                                </form>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+                            <img
+                                src="https://www.worldhotels.com/content/dam/worldhotels/hotel/hoteliers-marketing-amiana-resort.2.jpg" class="img-fluid" alt="img_Hotel" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

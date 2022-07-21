@@ -2,7 +2,7 @@
 
 const mongoConfig = require('./configs/mongoConfig');
 const app = require('./configs/app');
-const port = 3000;
+const port = 3200 || process.env.PORT;
 
 mongoConfig.init();
 
