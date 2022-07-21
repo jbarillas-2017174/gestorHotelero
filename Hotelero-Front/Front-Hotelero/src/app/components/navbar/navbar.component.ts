@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserRestService } from 'src/app/services/userRest/user-rest.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,12 +8,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  identity: any
+
 
   constructor(
-    private router: Router
+    private router: Router,
+    private userRest: UserRestService
   ) { }
 
   ngOnInit(): void {
+    this.identity = this.userRest.getIdentity().role;
   }
 
   logOut() {
