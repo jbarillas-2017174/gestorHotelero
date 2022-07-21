@@ -39,7 +39,7 @@ exports.getHotel = async (req, res)=>{
     try {
         const hotelId = req.params.id;
         const hotel = await Hotel.findOne({_id: hotelId});
-        if(!hotel) return res.status(404).send({message: 'Hotel not found'});
+        if(!hotel) return res.send({message: 'Hotel not found'});
         return res.send({message: 'Hotel found: ', hotel});
     } catch (err) {
         console.log(err)

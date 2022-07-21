@@ -19,7 +19,7 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent},
   {path: 'invoice', component: InvoiceComponent},
   {path: 'home', component: HomeComponent},
-  {path: 'rooms', component: RoomsComponent},
+  {path: 'rooms/:id', component: RoomsComponent},
   {path: '**', component: NotfoundComponent}
 ];
 

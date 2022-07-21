@@ -12,6 +12,6 @@ api.put('/updateHotel/:id', [mdAuth.ensureAuth, mdAuth.isAdmin], HotelController
 api.delete('/deleteHotel/:id', [mdAuth.ensureAuth, mdAuth.isAdmin], HotelController.deleteHotel);
 
 //User
-api.get('/getHotels', mdAuth.ensureAuth, HotelController.getHotels);
+api.get('/getHotels',mdAuth.ensureAuth,HotelController.getHotels);
 
 module.exports = api;
