@@ -32,3 +32,25 @@ exports.isAdmin = async (req, res, next) =>{
         return err;
     }
 }
+
+exports.isHotelAdmin = async (req, res, next)=>{
+    try {
+        const user = req.user;
+        if(user.role === "HOTEL_ADMIN" || user.role === 'ADMIN') return next();
+        else return res.status(403).send({message: 'User unauthorized'});
+    } catch (err) {
+        console.log(err);
+        return err;
+    }
+}
+
+exports.isClient = async (req, res, next)=>{
+    try {
+        const user = req.user;
+        if(user.role === 'CLIENT') return next();
+        else return res.status(403).send({message: 'Only users can do this action.'})
+    } catch (err) {
+        console.log(err);
+        return err;
+    }
+}

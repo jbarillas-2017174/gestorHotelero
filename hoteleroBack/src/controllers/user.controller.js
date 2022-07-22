@@ -194,6 +194,8 @@ exports.deleteUser = async (req, res) => {
 }
 
 
+//----------------------------------------------Admin Hotel -----------------------------------------------------
+
 exports.createAdmin = async (req, res) => {
     try {
         if (await User.find() == '' || !await User.findOne({ username: 'Admin' })) {
@@ -208,6 +210,32 @@ exports.createAdmin = async (req, res) => {
         }
     } catch (err) {
         console.log(err);
-        return res.status(500).send({ message: 'Error saving ADMIN' })
+        return res.status(500).send(err)
+    }
+}
+
+
+
+exports.createAdminHotel = async (req, res) => {
+    try {
+        const params = req.body;
+        const data = {
+            name: params.name,
+            username: params.username,
+            email: params.email,
+            password: params.password,
+            role: 'HOTEL_ADMIN'
+        }
+        const msg = validateData(data);
+        if (msg) return res.status(400).send(msg);
+        const already = await User.findOne({ username: params.username });
+        if (already) return res.status(400).send({ message: 'Username already exist' });
+        if (data.role != 'HOTEL_ADMIN') return res.status(400).send({ message: 'Cannot create this account' });
+        const admin = new User(data);
+        await admin.save();
+        return res.send({ message: 'Hotel admin created' });
+    } catch (err) {
+        console.log(err);
+        return res.status(500).send(err);
     }
 }

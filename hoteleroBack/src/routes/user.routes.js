@@ -21,5 +21,9 @@ api.post('/createUser', [mdAuth.ensureAuth, mdAuth.isAdmin], userController.crea
 api.put('/updateUser/:id', [mdAuth.ensureAuth, mdAuth.isAdmin], userController.updateUser);
 api.delete('/deleteUser/:id', [mdAuth.ensureAuth, mdAuth.isAdmin], userController.deleteUser);
 
+//hotel admin
+api.post('/hotelAdmin', [mdAuth.ensureAuth, mdAuth.isHotelAdmin], userController.createAdminHotel);
+
+
 
 module.exports = api;
