@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RoomModel } from 'src/app/models/room.model';
 import { RoomRestService } from 'src/app/services/roomRest/room-rest.service';
+import { UserRestService } from 'src/app/services/userRest/user-rest.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -15,10 +16,13 @@ export class RoomsComponent implements OnInit {
   rooms: any
   newRoom: any
   roomUpdate: any
+  identity: any
+  services: any
 
   constructor(
     private roomRest: RoomRestService,
-    public activatedRoute: ActivatedRoute
+    public activatedRoute: ActivatedRoute,
+    private userRest: UserRestService
   ) {
     this.room = new RoomModel('', 0, '', true, 0, '', '', [])
   }
@@ -28,6 +32,7 @@ export class RoomsComponent implements OnInit {
       this.idHotel = id.get('id');
     })
     this.getRooms()
+    this.identity = this.userRest.getIdentity().role;
   }
 
   saveRoom(addRoom: any) {
@@ -53,7 +58,9 @@ export class RoomsComponent implements OnInit {
 
   getRooms() {
     this.roomRest.getRooms(this.idHotel).subscribe({
-      next: (res: any) => this.rooms = res.room,
+      next: (res: any) => {
+        this.rooms = res.room
+      },
       error: (err) => Swal.fire({
         icon: 'error',
         title: err.error.message || err.error,
@@ -161,5 +168,14 @@ export class RoomsComponent implements OnInit {
     })
   }
 
+
+  getServices(id: any) {
+    this.roomRest.getServices(id).subscribe({
+      next: (res: any) => {
+        this.services = res.exist.services
+      },
+      error: (err) => alert(err.error || err.error.message)
+    })
+  }
 
 }

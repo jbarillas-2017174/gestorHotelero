@@ -9,6 +9,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { UsersComponent } from './components/users/users.component';
 import { HomeComponent } from './components/home/home.component';
 import { RoomsComponent } from './components/rooms/rooms.component';
+import { ServicesComponent } from './components/services/services.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'invoice', component: InvoiceComponent},
   {path: 'home', component: HomeComponent},
   {path: 'rooms/:id', component: RoomsComponent},
+  {path: 'services', component: ServicesComponent},
   {path: '**', component: NotfoundComponent}
 ];
 

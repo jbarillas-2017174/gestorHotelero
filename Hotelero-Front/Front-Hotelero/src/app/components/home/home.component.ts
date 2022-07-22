@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HomeRestService } from 'src/app/services/homeRest/home-rest.service';
 import { ModelHotel } from 'src/app/models/hotel.model';
 import Swal from 'sweetalert2';
+import { UserRestService } from 'src/app/services/userRest/user-rest.service';
 
 @Component({
   selector: 'app-home',
@@ -14,16 +15,19 @@ export class HomeComponent implements OnInit {
   hotelsUpdate: any
   search:any
   searchAddress:any
+  identity: any
 
 
   constructor(
-    private homeRest: HomeRestService
+    private homeRest: HomeRestService,
+    private userRest: UserRestService
   ) { 
     this.VwHotels = new ModelHotel('','','','');
   }
 
   ngOnInit(): void {
     this.getHotelsView();
+    this.identity = this.userRest.getIdentity().role;
   }
 
   getHotelsView(){

@@ -15,6 +15,9 @@
                     <a class="nav-link" routerLink="/history">History</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" routerLink="/services" *ngIf="identity == 'ADMIN'">Services</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" routerLink="/users" *ngIf="identity == 'ADMIN'">Users</a>
                 </li>
                 <li class="nav-item dropdown">

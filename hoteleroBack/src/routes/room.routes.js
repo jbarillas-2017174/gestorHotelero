@@ -16,5 +16,6 @@ api.post('/addService/:id', [mdAuth.ensureAuth, mdAuth.isHotelAdmin], RoomContro
 api.get('/getRooms/:id', mdAuth.ensureAuth, RoomController.getRooms);
 api.put('/reserveRoom/:id', [mdAuth.ensureAuth, mdAuth.isClient], RoomController.reservation);
 api.put('/leaveRoom/:id', [mdAuth.ensureAuth, mdAuth.isClient], RoomController.leaveRoom);
+api.get('/getService/:id', mdAuth.ensureAuth, RoomController.getServices);
 
 module.exports = api;

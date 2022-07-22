@@ -151,3 +151,15 @@ exports.addService = async (req, res) => {
         return res.status(500).send(err);
     }
 }
+
+exports.getServices = async (req, res) =>{
+    try {
+        const roomId = req.params.id;
+        const exist = await Room.findOne({_id: roomId}).select('services ').populate('services.service');
+        if(!exist) return res.status(404).send({message: 'Room not found'});
+        return res.send({message: 'Room found: ', exist})
+    } catch (err) {
+        console.log(err);
+        return res.status(500).send(err);
+    }
+}
